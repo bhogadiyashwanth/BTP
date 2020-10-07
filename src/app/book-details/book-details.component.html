@@ -1,0 +1,20 @@
+<mat-card style="margin:10%">
+<table>
+    <tr>
+        <td style="width:100px">
+            {{book.author}}
+        </td>
+        <td style="padding-left: 150px;">
+            <span (click)="deleteClicked(book.id)" class="material-icons">
+                delete
+            </span>
+        </td>
+    </tr>
+    <tr>
+        {{book.title}}
+    </tr>
+    <tr>
+        {{book.rating}}
+    </tr>
+</table>
+</mat-card>

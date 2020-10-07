@@ -1,0 +1,12 @@
+<div class = "dialog-wrapper">
+    <div style="font-size: 16px;">Uploaded image</div>
+    <div style="display: flex; justify-content: center;">
+    <img style="width: 224px; height: 224px;" [src]="imgUrl">
+    </div>
+    <div class = "btn-wrapper">
+        <span class="add-btn silver-color" (click)="confirmClicked(false)">
+            Decline</span>
+        <span class="add-btn blue-color" (click)="confirmClicked(true)" >
+                Confirm</span>    
+    </div>
+</div>
