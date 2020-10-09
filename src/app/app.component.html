@@ -1,6 +1,6 @@
 <mat-toolbar class= "toolbar font-style">
   <div>SWARM</div>
-  <div class= "left-half">
+  <div style="cursor: pointer;" class= "left-half">
   <div>FEED</div>
   <div>AUTHORS</div>
   <div>EXPLORE</div>
@@ -36,6 +36,10 @@
   <div class = "right-wrapper">
     <div class="heading">
       Analysis
+    </div>
+    <div *ngIf="upImgFlag">
+        <div *ngIf="benign">Benign</div>
+        <div *ngIf="!benign">Malignant</div>
     </div>
   </div>
 </div>

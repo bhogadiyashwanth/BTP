@@ -6,10 +6,10 @@ import { Router } from "@angular/router";
   providedIn: "root"
 })
 export class Services{
- url:string = "https://wohchbzhe5.execute-api.us-east-2.amazonaws.com/Stage/";
+ url:string = "http://localhost:3000/";
   constructor(private http: HttpClient) {}
-  getBooks() {
-    return this.http.get<any>(this.url+"books");
+  getBooks(data) {
+    return this.http.post<any>(this.url+"pythonfile",data);
   }
   addBooks(data) {
     return this.http.post<any>(this.url+"books", data);

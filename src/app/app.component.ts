@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   file;
   imagePath;
   imgURL;
+  benign:boolean=false
   upImgFlag:boolean=false;
   title = 'cc-angular-frontend'; 
   constructor(private services:Services,public dialog: MatDialog){
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
     dialogRef.componentInstance.onConfirm.subscribe(()=>{
       dialogRef.close();
       this.upImgFlag=true;
+      this.getBookDetails();
     })
     dialogRef.componentInstance.onDecline.subscribe(()=>{
       dialogRef.close();
@@ -37,12 +39,16 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit(){
-   this.getBookDetails();
   }
 
   getBookDetails(){
-    this.services.getBooks().subscribe(res=>{
-      this.data=res
+    this.services.getBooks({data:this.imgURL}).subscribe(res=>{
+      if(res.data===0){
+        this.benign=true
+      }
+      else{
+        this.benign=false
+      }
     })
   }
 
@@ -65,7 +71,8 @@ export class AppComponent implements OnInit {
     reader.readAsDataURL(this.file); 
     event.target.value = '';
     reader.onload = (_event) => { 
-      this.imgURL = reader.result; 
+      this.imgURL = reader.result;
+      console.log("img",this.imgURL) 
       this.openDialog();
     }
   }
